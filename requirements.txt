@@ -2,3 +2,6 @@ pytz==2019.3
 sqlparse==0.3.0
 virtualenv==16.7.9
 virtualenvwrapper-win==1.2.5
+Django==2.1
+google-api-python-client
+oauth2client
