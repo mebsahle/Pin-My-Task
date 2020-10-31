@@ -1,5 +1,6 @@
 # Pin-My-Task
 
+install python3
 ```pip install virtualenvwrapper-win```\
 ```mkvirtualenv todoo``` <br>
 > Windows ```workon todoo``` <br>
