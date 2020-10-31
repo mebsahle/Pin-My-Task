@@ -1,0 +1,47 @@
+<html lang="en">
+<head> 
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'todo/css/materialize.css' %}" rel="stylesheet">
+    <title>Todo App</title>
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+            <h1 class="text-align: center">My Tasks</h1>
+            
+            <form action="/addTodo/" method="post">{%csrf_token%}
+                <input type = "text" name = "item">
+                <input type="submit" class="btn teal lighten-3" value="Add Task">
+            </form>
+
+            <ul>
+                {%for todo_item in all_items %}
+                <div class="card-panel teal lighten-2">
+                    <li><strong><h4>{{ todo_item.item }}</h4></strong>
+                        <div>
+                            <a class="btn whitesmoke left-align" 
+                                value="google" 
+                               href="https://calendar.google.com/calendar/u/0/r?tab=wc">
+                               Add to Google Calendar
+                            </a>
+                            &nbsp;&nbsp;
+                            <a class="btn blue right-align" 
+                               value="Outlook" href="https://outlook.live.com/calendar/0/view/month">
+                               Add to Outlook
+                            </a>
+                            &nbsp;&nbsp;
+                           <a class="btn pink right-align" 
+                              value="Delete" href="/deleteTodo/{{todo_item.id}}/">Delete</a>
+                        </div>
+                    </li> 
+                </div>
+            
+                {% endfor %}
+            </ul>  
+            {% endblock %}  
+    </div>
+</body>
+</html>
+
